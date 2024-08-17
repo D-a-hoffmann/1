@@ -2,12 +2,17 @@ import express from "express";
 import routes from "./routes";
 import "./database";
 import { resolve } from "node:path";
+import cors from "cors";
 
-
+const corsOptions = {
+    origin: "localhost",
+    credential: true,
+}
 
 class App {
     constructor() {
         this.app = express();
+        this.app.use(cors(corsOptions));
         this.middlewares();
         this.routes();
     }
